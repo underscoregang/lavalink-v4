@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>lavalink-v4</title>
+  <meta name="description" content="A ready-to-run Lavalink v4.2.2 node for Discord music bots, preconfigured for YouTube, Spotify and search.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎵</text></svg>">
+  <style>
+    :root {
+      --bg: #f7f7f8;
+      --surface: #ffffff;
+      --border: #e3e3e8;
+      --text: #1c1c22;
+      --muted: #5f6070;
+      --accent: #e5484d;
+      --accent-text: #ffffff;
+      --code-bg: #f0f0f3;
+      --pre-bg: #17171c;
+      --pre-text: #e8e8ee;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111114;
+        --surface: #19191e;
+        --border: #2c2c34;
+        --text: #ececf1;
+        --muted: #9d9daa;
+        --accent: #ff6369;
+        --accent-text: #111114;
+        --code-bg: #24242b;
+        --pre-bg: #0b0b0e;
+        --pre-text: #e8e8ee;
+      }
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font: 16px/1.65 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+    a { color: var(--accent); }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 0 16px; }
+
+    header { padding: 56px 0 32px; }
+    header h1 { font-size: 2.4rem; margin: 0 0 8px; letter-spacing: -0.02em; }
+    header p { margin: 0; color: var(--muted); font-size: 1.1rem; }
+    .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+    .badge {
+      font-size: 0.8rem; padding: 3px 10px; border-radius: 999px;
+      border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+    }
+
+    .downloads {
+      display: grid; gap: 12px;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      margin-bottom: 40px;
+    }
+    .dl {
+      display: flex; flex-direction: column; gap: 4px;
+      padding: 18px; border-radius: 12px; text-decoration: none;
+      background: var(--surface); border: 1px solid var(--border); color: var(--text);
+      transition: border-color .15s, transform .15s;
+    }
+    .dl:hover { border-color: var(--accent); transform: translateY(-1px); }
+    .dl strong { font-size: 1rem; }
+    .dl span { font-size: 0.875rem; color: var(--muted); }
+    .dl.primary { background: var(--accent); border-color: var(--accent); color: var(--accent-text); }
+    .dl.primary span { color: var(--accent-text); opacity: .85; }
+
+    article {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 12px; padding: 8px 32px 32px; margin-bottom: 48px;
+    }
+    article > h1:first-child, article > h1:first-child + p, article > h1:first-child + p + blockquote { display: none; }
+    article h2 { margin-top: 2.2em; padding-bottom: .3em; border-bottom: 1px solid var(--border); }
+    article h2, article h3 { scroll-margin-top: 16px; }
+    article hr { display: none; }
+    article code {
+      font: 0.875em ui-monospace, SFMono-Regular, Consolas, monospace;
+      background: var(--code-bg); padding: 2px 6px; border-radius: 6px;
+    }
+    article pre {
+      position: relative; background: var(--pre-bg); color: var(--pre-text);
+      padding: 16px; border-radius: 10px; overflow-x: auto;
+    }
+    article pre code { background: none; padding: 0; color: inherit; }
+    .copy {
+      position: absolute; top: 8px; right: 8px;
+      font: 12px system-ui, sans-serif; padding: 4px 10px; border-radius: 6px; cursor: pointer;
+      background: #2c2c34; color: #e8e8ee; border: 1px solid #3a3a44;
+    }
+    article table { width: 100%; border-collapse: collapse; display: block; overflow-x: auto; }
+    article th, article td { text-align: left; padding: 8px 12px; border: 1px solid var(--border); }
+    article th { background: var(--code-bg); }
+    article blockquote { margin: 0; padding: 4px 16px; border-left: 4px solid var(--accent); color: var(--muted); }
+
+    footer { padding: 0 0 48px; color: var(--muted); font-size: 0.875rem; text-align: center; }
+
+    @media (max-width: 600px) {
+      header { padding-top: 32px; }
+      header h1 { font-size: 1.9rem; }
+      article { padding: 4px 16px 20px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <h1>🎵 lavalink-v4</h1>
+      <p>A ready-to-run Lavalink node for Discord music bots, preconfigured for YouTube, Spotify and search.</p>
+      <div class="badges">
+        <span class="badge">Lavalink {{LAVALINK_VERSION}}</span>
+        <span class="badge">Java 17+</span>
+        <span class="badge">Port 2000</span>
+      </div>
+    </header>
+
+    <section class="downloads" aria-label="Downloads">
+      <a class="dl primary" href="lavalink-v4.zip" download>
+        <strong>⬇ Download project (.zip)</strong>
+        <span>README + application.yml · {{ZIP_SIZE}}</span>
+      </a>
+      <a class="dl" href="https://github.com/lavalink-devs/Lavalink/releases/download/{{LAVALINK_VERSION}}/Lavalink.jar">
+        <strong>☕ Lavalink.jar {{LAVALINK_VERSION}}</strong>
+        <span>Official server build from GitHub releases</span>
+      </a>
+      <a class="dl" href="application.yml" download>
+        <strong>⚙️ application.yml</strong>
+        <span>Config file only · {{YML_SIZE}}</span>
+      </a>
+    </section>
+
+    <article>
+{{README}}
+    </article>
+
+    <footer>Built from commit <code>{{COMMIT}}</code></footer>
+  </div>
+
+  <script>
+    document.querySelectorAll('article pre').forEach(function (pre) {
+      var btn = document.createElement('button');
+      btn.className = 'copy';
+      btn.type = 'button';
+      btn.textContent = 'Copy';
+      btn.addEventListener('click', function () {
+        navigator.clipboard.writeText(pre.querySelector('code').innerText).then(function () {
+          btn.textContent = 'Copied!';
+          setTimeout(function () { btn.textContent = 'Copy'; }, 1500);
+        });
+      });
+      pre.appendChild(btn);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+{
+  "name": "lavalink-v4-web",
+  "version": "1.0.0",
+  "description": "Download page for lavalink-v4",
+  "scripts": {
+    "build": "node build.mjs",
+    "deploy": "npm run build && wrangler deploy"
+  },
+  "type": "module",
+  "devDependencies": {
+    "marked": "^18.1.2",
+    "wrangler": "^4.156.0"
+  },
+  "private": true
+}
