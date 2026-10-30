@@ -1,0 +1,111 @@
+lavalink:
+  plugins:
+    - dependency: dev.lavalink.youtube:youtube-plugin:1.18.1
+      repository: https://maven.lavalink.dev/releases
+    - dependency: com.github.topi314.lavasrc:lavasrc-plugin:4.8.2
+      repository: https://maven.lavalink.dev/releases
+    - dependency: com.github.topi314.lavasearch:lavasearch-plugin:1.0.0
+      repository: https://maven.lavalink.dev/releases
+  server:
+    bufferDurationMs: 400
+    filters:
+      channelMix: true
+      distortion: true
+      equalizer: true
+      karaoke: true
+      lowPass: true
+      rotation: true
+      timescale: true
+      tremolo: true
+      vibrato: true
+      volume: true
+    frameBufferDurationMs: 5000
+    gcWarnings: true
+    opusEncodingQuality: 10
+    password: YOUR_PASSWORD
+    playerUpdateInterval: 5
+    resamplingQuality: HIGH
+    soundcloudSearchEnabled: true
+    sources:
+      bandcamp: true
+      http: true
+      local: false
+      nico: true
+      soundcloud: true
+      twitch: true
+      vimeo: true
+      youtube: false
+    trackStuckThresholdMs: 10000
+    useSeekGhosting: true
+    youtubePlaylistLoadLimit: 6
+    youtubeSearchEnabled: true
+logging:
+  file:
+    path: ./logs/
+  level:
+    lavalink: INFO
+    root: INFO
+  logback:
+    rollingPolicy:
+      maxFileSize: 1GB
+      maxHistory: 30
+  request:
+    enabled: true
+    includeClientInfo: true
+    includeHeaders: false
+    includePayload: true
+    includeQueryString: true
+    maxPayloadLength: 10000
+metrics:
+  prometheus:
+    enabled: false
+plugins:
+  lavasearch:
+    sources:
+      - spotify
+      - youtube
+  lavasrc:
+    providers:
+      - ytsearch:"%ISRC%"
+      - ytsearch:%QUERY%
+    sources:
+      applemusic: false
+      deezer: false
+      flowerytts: false
+      spotify: true
+      yandexmusic: false
+      youtube: true
+    spotify:
+      albumLoadLimit: 10
+      clientId: YOUR_CLIENT_ID
+      clientSecret: YOUR_CLIENT_SECRET
+      countryCode: US
+      localFiles: false
+      playlistLoadLimit: 10
+      resolveArtistsInSearch: true
+  youtube:
+    allowDirectPlaylistIds: true
+    allowDirectVideoIds: true
+    allowSearch: true
+    clients:
+      - MUSIC
+      - WEB
+      - TV
+      - TVHTML5_SIMPLY
+      - ANDROID_VR
+    enabled: true
+    oauth:
+      enabled: true
+      refreshToken: YOUR_REFRESH_TOKEN
+      skipInitialization: true
+    remoteCipher:
+      url: https://cipher.kikkia.dev/
+      userAgent: lavalink-server
+sentry:
+  dsn: ""
+  environment: ""
+server:
+  address: 0.0.0.0
+  http2:
+    enabled: false
+  port: 2000
